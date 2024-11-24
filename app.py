@@ -25,5 +25,11 @@ def delete_task(task_id):
     db.delete_task(task_id)
     return redirect("/")
 
+
+@app.route("/complete/<int:task_id>")
+def make_complete(task_id):
+    db.make_complete(task_id)
+    return redirect('/')
+
 if __name__ == '__main__':
     app.run(debug=True) 

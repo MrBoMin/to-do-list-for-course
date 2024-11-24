@@ -22,7 +22,7 @@
         <!-- Add Task Form -->
         <form class="d-flex mb-4" method="POST" action="\add-task">
             <input type="text" id="taskInput" class="form-control me-2" placeholder="Enter a new task" name="task_name">
-            <button type="submit" id="addTaskBtn" class="btn btn-success">Add Task</button>
+            <button type="submit" id="addTaskBtn" class="btn btn-primary">Add Task</button>
         </form> 
 
         <!-- Task List -->
@@ -30,10 +30,19 @@
             {% for task in data %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     {{task.description}}
+                    <div>
+         
+                    {% if task.is_complete == 0  %}
+                    <a href="/complete/{{task.id}}" class="me-2 btn btn-warning">Complete</a>
+                    {% else %}
+                    <a href="/complete/{{task.id}}" class="me-2 btn btn-success">Done</a>
+                    {% endif %}
+                    
                     <a href='/delete/{{task.id}}' class="btn btn-danger">Delete</a>
+                    </div>
                 </li>
-
             {% endfor %}
+            
         </ul>
     </div>
 
